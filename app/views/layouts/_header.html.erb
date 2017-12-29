@@ -1,8 +1,34 @@
-<nav class="">
-    <ul>
-        <li> <%= link_to "Store Home", store_path %> </li>
-        <% if !!@cart %>
-          <li> <%= link_to "Cart", cart_path(current_cart) %></li>
-        <% end %>
-    </ul>
-</nav>
+<!--  navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top bg-primary" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+        <span class="navbar-text"><%= link_to "Store Home", store_path %></span>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+           <!--  nav here -->
+           <% if user_signed_in? %>
+              <li><%= link_to 'Signed in as ' + current_user.email, user_path(current_user) %></li>
+              <% if current_user.current_cart.nil? %>
+              <li> ---- </li>
+              <% else %>
+                <li><%= link_to 'Cart', cart_path(current_user.current_cart) %></li>
+              <% end %>
+
+              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <span class="navbar-text"><li>Hello Guest!</li></span>
+              <li><%= link_to 'sign in', new_user_session_path  %></li>
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
