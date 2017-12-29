@@ -1,4 +1,7 @@
 <h1><%= @category.title %></h1>
 
 <!-- in controller @items = @category.items -->
-<%= render partial: 'items/items', locals: {items: @items} %>
+<% @items.each do |item| %>
+
+  <%= render 'items/item', item: item %>
+<% end %>
