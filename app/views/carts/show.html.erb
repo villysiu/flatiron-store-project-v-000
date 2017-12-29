@@ -12,7 +12,7 @@
 <% end %>
 </table>
 <p class="total price">
-  Total: <%= number_to_currency current_cart.total_price %></td>
+  Total: <%= number_to_currency current_cart.total %></td>
 </p>
 <p>
   <%= button_to 'Checkout', checkout_path(@cart) %>
