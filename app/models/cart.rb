@@ -17,7 +17,7 @@ class Cart < ActiveRecord::Base
   end
 
   def total
-    line_items.collect {|li| li.valid? ? (li.item.price/100 * li.quantity) : 0 }.sum
+    line_items.collect {|li| li.valid? ? (li.item.price * li.quantity) : 0 }.sum
   end
 
 end
