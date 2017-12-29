@@ -5,8 +5,8 @@
   <tr>
     <td><%= line_item.item.title %></td>
     <td class="qty">Quantity: <%= line_item.quantity %></td>
-    <td class="price"><%= number_to_currency(line_item.item.price) %></td>
-    <td class="price"><%= number_to_currency(line_item.item.price * line_item.quantity) %></td>
+    <td class="price"><%= number_to_currency(line_item.item.price/100) %></td>
+    <td class="price"><%= number_to_currency(line_item.item.price/100 * line_item.quantity) %></td>
     <td><%= link_to "Delete", line_item_path(line_item), :data => {:confirm => "You sure?", :method => "delete"} %></td>
   </tr>
 <% end %>
