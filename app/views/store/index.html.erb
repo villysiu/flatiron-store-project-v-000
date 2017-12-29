@@ -1,5 +1,8 @@
 <%= render partial: 'categories/categories' %>
 
-<%= render partial: "items/items", locals: {items: @items} %>
+<% @items.each do |item| %>
+
+  <%= render 'items/item', item: item %>
+<% end %>
 
 <%= render partial: 'users/users' %>
