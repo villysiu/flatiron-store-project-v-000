@@ -13,9 +13,9 @@ class CartsController < ApplicationController
     @cart.status = "submitted"
     @cart.line_items.each do |line_item|
       puts "#{line_item.item.inventory} - #{line_item.quantity}"
-      some = line_item.item.inventory - line_item.quantity
-      puts some
-      line_item.save
+      line_item.item.inventory -= line_item.quantity
+    
+      line_item.item.save
     end
     current_user.current_cart = nil
     @cart.save
