@@ -1,15 +1,6 @@
 <ul>
 <% @items.each do |item| %>
 
-<li><%= item.title %> | <%= number_to_currency(item.price/100)%> | inventory: <%==item.inventory%>
-  <% if user_signed_in? %>
-    |<%= form_for :line_item, url: line_items_path(item_id: item) do |f| %>
-      <%= f.hidden_field :item_id, value: item.id %>
-      <%= f.hidden_field :quantity, value: 1 %>
-      <%= f.submit "Add to Cart" %>
-      <!-- button_to 'Add to Cart', line_items_path(item_id: item) -->
-      <% end %>
-  <% end %>
-</li>
+  <%= render 'items/item', :item => item %>
 <% end %>
 </ul>
